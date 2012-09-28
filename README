@@ -1,0 +1,22 @@
+cpuloadblink
+
+A simple C program for the Raspberry Pi to show processor activity through the
+ACT led on the board.
+
+When idle, the led will be 1 second on / 1 second off. The higher the cpu load,
+the quicker it blinks.
+
+Compilation
+-----------
+gcc cpuloadblink.c -o cpuloadblink
+
+Usage
+-----
+sudo ./cpuloadblink
+No options, this is a tiny, quick&dirty program, don't expect error messages !
+
+Installation
+------------
+as root, just copy to /usr/local/bin
+To run at startup, you can add "/usr/local/bin/cpuloadblink &" to /etc/rc.local
+(before "exit" of course)
