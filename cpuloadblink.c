@@ -9,7 +9,7 @@ const char* led_control_path = "/sys/class/leds/led0/brightness";
 const char* procstat = "/proc/stat";
 
 const int base_delay   = 1000000; /* 1 second */
-const int min_delay    =  100000; /* 0.1 seconds */
+const int min_delay    =   50000; /* 0.05 seconds */
 const int update_delay =  500000; /* 0.5 seconds */
 
 void blink(int led_fd) {
@@ -66,7 +66,6 @@ int main (int argc, char** argv) {
 
   while(1) {
     idle = read_stat(stat_fd);
-    fflush(stdout);
     tblink -= blink_delay;
     blink_delay = (min_delay * 100 + (base_delay - min_delay) * idle) / 100;
     tblink += blink_delay;
